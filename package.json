@@ -3,7 +3,6 @@
     "@types/node": "^22.14.1"
   },
   "dependencies": {
-    "@aws-cdk/lambda-layer-kubectl": "^1.204.0",
     "aws-cdk-lib": "^2.189.0",
     "constructs": "^10.4.2"
   }

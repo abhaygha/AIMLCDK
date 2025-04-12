@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ai-ml-app
+  labels:
+    app: ai-ml-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ai-ml-app
+  template:
+    metadata:
+      labels:
+        app: ai-ml-app
+    spec:
+      containers:
+      - name: ai-ml-app
+        image: PLACEHOLDER
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ai-ml-app
+spec:
+  selector:
+    app: ai-ml-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer
